@@ -5,7 +5,6 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.closeSoftKeyboard
 import androidx.test.espresso.action.ViewActions.replaceText
-import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -28,7 +27,7 @@ class FormularioProdutoActivityTest {
     @Test
     fun deveMostrarOsCamposNecessariosParaOCadastroDeProduto() {
         launch(ListaProdutosActivity::class.java)
-        onView(withId(R.id.activity_lista_produtos_fab)).perform(click())
+        clicaNoFAB()
 
         onView(withId(R.id.activity_formulario_produto_nome)).check(matches(isDisplayed()))
         onView(withId(R.id.activity_formulario_produto_descricao)).check(matches(isDisplayed()))
@@ -40,21 +39,15 @@ class FormularioProdutoActivityTest {
     fun devePreencherOsCamposDeCadastroDeProdutosESalvar() {
         launch(ListaProdutosActivity::class.java)
 
-        onView(withId(R.id.activity_lista_produtos_fab)).perform(click())
+        clicaNoFAB()
 
-        onView(withId(R.id.activity_formulario_produto_nome)).perform(
-            typeText("Banana"),
-            closeSoftKeyboard()
+        preencheCamposDoProduto(
+            nome = "Banana",
+            descricao = "banana prata",
+            valor = "6.99"
         )
-        onView(withId(R.id.activity_formulario_produto_descricao)).perform(
-            typeText("banana prata"),
-            closeSoftKeyboard()
-        )
-        onView(withId(R.id.activity_formulario_produto_valor)).perform(
-            typeText("6.99"),
-            closeSoftKeyboard()
-        )
-        onView(withId(R.id.activity_formulario_produto_botao_salvar)).perform(click())
+
+        clicaNoSalvar()
 
         onView(withText("Banana")).check(matches(isDisplayed()))
 
@@ -64,40 +57,56 @@ class FormularioProdutoActivityTest {
     fun deveCadastrarUmProdutoEDepoisEditarEsteProduto() {
         launch(ListaProdutosActivity::class.java)
 
-        onView(withId(R.id.activity_lista_produtos_fab)).perform(click())
+        clicaNoFAB()
 
-        onView(withId(R.id.activity_formulario_produto_nome)).perform(
-            typeText("Banana nanica"),
-            closeSoftKeyboard()
+        preencheCamposDoProduto(
+            nome = "Banana nanica",
+            descricao = "da horta",
+            valor = "6.99"
         )
-        onView(withId(R.id.activity_formulario_produto_descricao)).perform(
-            typeText("da horta"),
-            closeSoftKeyboard()
-        )
-        onView(withId(R.id.activity_formulario_produto_valor)).perform(
-            typeText("6.99"),
-            closeSoftKeyboard()
-        )
-        onView(withId(R.id.activity_formulario_produto_botao_salvar)).perform(click())
+
+        clicaNoSalvar()
 
         onView(withText("Banana nanica")).perform(click())
 
         onView(withId(R.id.menu_detalhes_produto_editar)).perform(click())
 
+        preencheCamposDoProduto(
+            nome = "Banana prata",
+            descricao = "da vendinha",
+            valor = "4.99"
+        )
+
+        clicaNoSalvar()
+
+        onView(withText("Banana prata")).check(matches(isDisplayed()))
+    }
+
+    private fun clicaNoSalvar() {
+        onView(withId(R.id.activity_formulario_produto_botao_salvar)).perform(click())
+    }
+
+    private fun preencheCamposDoProduto(
+        nome: String,
+        descricao: String,
+        valor: String
+    ) {
         onView(withId(R.id.activity_formulario_produto_nome)).perform(
-            replaceText("Banana prata"),
+            replaceText(nome),
             closeSoftKeyboard()
         )
         onView(withId(R.id.activity_formulario_produto_descricao)).perform(
-            replaceText("da vendinha"),
+            replaceText(descricao),
             closeSoftKeyboard()
         )
         onView(withId(R.id.activity_formulario_produto_valor)).perform(
-            replaceText("4.99"),
+            replaceText(valor),
             closeSoftKeyboard()
         )
-        onView(withId(R.id.activity_formulario_produto_botao_salvar)).perform(click())
+    }
 
+    private fun clicaNoFAB() {
+        onView(withId(R.id.activity_lista_produtos_fab)).perform(click())
     }
 
 }
