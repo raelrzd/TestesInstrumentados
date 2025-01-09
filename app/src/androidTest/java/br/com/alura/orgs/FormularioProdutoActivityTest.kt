@@ -2,6 +2,9 @@ package br.com.alura.orgs
 
 import androidx.test.core.app.ActivityScenario.launch
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.pressBack
+import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -17,6 +20,25 @@ class FormularioProdutoActivityTest {
         onView(withId(R.id.activity_formulario_produto_descricao)).check(matches(isDisplayed()))
         onView(withId(R.id.activity_formulario_produto_valor)).check(matches(isDisplayed()))
         onView(withId(R.id.activity_formulario_produto_botao_salvar)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun devePreencherOsCamposDeCadastroDeProdutosESalvar() {
+        launch(FormularioProdutoActivity::class.java)
+        onView(withId(R.id.activity_formulario_produto_nome)).perform(
+            typeText("Banana"),
+            pressBack()
+        )
+        onView(withId(R.id.activity_formulario_produto_descricao)).perform(
+            typeText("banana prata"),
+            pressBack()
+        )
+        onView(withId(R.id.activity_formulario_produto_valor)).perform(
+            typeText("6.99"),
+            pressBack()
+        )
+        onView(withId(R.id.activity_formulario_produto_botao_salvar)).perform(click())
+
     }
 
 }

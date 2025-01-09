@@ -5,9 +5,6 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="ProdutosActivityTest">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
       <SelectionState runConfigName="deveMostrarONomeDoAplicativoNaTelaInicial()">
         <option name="selectionMode" value="DROPDOWN" />
         <DropdownSelection timestamp="2025-01-08T20:30:28.857712388Z">
@@ -23,6 +20,12 @@
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
       <SelectionState runConfigName="deveMostrarOsCamposNecessariosParaOCadastroDeProduto()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="deveMostrarOsCamposNecessariosParaOLogin()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="deveMostrarOsCamposNecessariosParaOCadastroDeUsuario()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
