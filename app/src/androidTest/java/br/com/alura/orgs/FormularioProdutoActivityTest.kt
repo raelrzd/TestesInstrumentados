@@ -11,7 +11,6 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.platform.app.InstrumentationRegistry
 import br.com.alura.orgs.database.AppDatabase
-import br.com.alura.orgs.ui.activity.FormularioProdutoActivity
 import br.com.alura.orgs.ui.activity.ListaProdutosActivity
 import org.junit.Before
 import org.junit.Test
@@ -27,7 +26,9 @@ class FormularioProdutoActivityTest {
 
     @Test
     fun deveMostrarOsCamposNecessariosParaOCadastroDeProduto() {
-        launch(FormularioProdutoActivity::class.java)
+        launch(ListaProdutosActivity::class.java)
+        onView(withId(R.id.activity_lista_produtos_fab)).perform(click())
+
         onView(withId(R.id.activity_formulario_produto_nome)).check(matches(isDisplayed()))
         onView(withId(R.id.activity_formulario_produto_descricao)).check(matches(isDisplayed()))
         onView(withId(R.id.activity_formulario_produto_valor)).check(matches(isDisplayed()))
@@ -36,7 +37,10 @@ class FormularioProdutoActivityTest {
 
     @Test
     fun devePreencherOsCamposDeCadastroDeProdutosESalvar() {
-        launch(FormularioProdutoActivity::class.java)
+        launch(ListaProdutosActivity::class.java)
+
+        onView(withId(R.id.activity_lista_produtos_fab)).perform(click())
+
         onView(withId(R.id.activity_formulario_produto_nome)).perform(
             typeText("Banana"),
             closeSoftKeyboard()
@@ -51,7 +55,6 @@ class FormularioProdutoActivityTest {
         )
         onView(withId(R.id.activity_formulario_produto_botao_salvar)).perform(click())
 
-        launch(ListaProdutosActivity::class.java)
         onView(withText("Banana")).check(matches(isDisplayed()))
 
     }
