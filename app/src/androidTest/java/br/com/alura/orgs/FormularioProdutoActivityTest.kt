@@ -4,6 +4,7 @@ import androidx.test.core.app.ActivityScenario.launch
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.closeSoftKeyboard
+import androidx.test.espresso.action.ViewActions.replaceText
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
@@ -56,6 +57,46 @@ class FormularioProdutoActivityTest {
         onView(withId(R.id.activity_formulario_produto_botao_salvar)).perform(click())
 
         onView(withText("Banana")).check(matches(isDisplayed()))
+
+    }
+
+    @Test
+    fun deveCadastrarUmProdutoEDepoisEditarEsteProduto() {
+        launch(ListaProdutosActivity::class.java)
+
+        onView(withId(R.id.activity_lista_produtos_fab)).perform(click())
+
+        onView(withId(R.id.activity_formulario_produto_nome)).perform(
+            typeText("Banana nanica"),
+            closeSoftKeyboard()
+        )
+        onView(withId(R.id.activity_formulario_produto_descricao)).perform(
+            typeText("da horta"),
+            closeSoftKeyboard()
+        )
+        onView(withId(R.id.activity_formulario_produto_valor)).perform(
+            typeText("6.99"),
+            closeSoftKeyboard()
+        )
+        onView(withId(R.id.activity_formulario_produto_botao_salvar)).perform(click())
+
+        onView(withText("Banana nanica")).perform(click())
+
+        onView(withId(R.id.menu_detalhes_produto_editar)).perform(click())
+
+        onView(withId(R.id.activity_formulario_produto_nome)).perform(
+            replaceText("Banana prata"),
+            closeSoftKeyboard()
+        )
+        onView(withId(R.id.activity_formulario_produto_descricao)).perform(
+            replaceText("da vendinha"),
+            closeSoftKeyboard()
+        )
+        onView(withId(R.id.activity_formulario_produto_valor)).perform(
+            replaceText("4.99"),
+            closeSoftKeyboard()
+        )
+        onView(withId(R.id.activity_formulario_produto_botao_salvar)).perform(click())
 
     }
 
