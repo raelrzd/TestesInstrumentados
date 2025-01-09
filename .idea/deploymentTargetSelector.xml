@@ -5,9 +5,15 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="deveMostrarONomeDoAplicativoNaTelaInicial()">
+      <SelectionState runConfigName="deveMostrarOsCamposNecessariosParaOCadastroDeProduto()">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-01-08T20:30:28.857712388Z">
+      </SelectionState>
+      <SelectionState runConfigName="deveMostrarOsCamposNecessariosParaOLogin()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="deveMostrarOsCamposNecessariosParaOCadastroDeUsuario()">
+        <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2025-01-09T14:28:10.004132385Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="LocalEmulator" identifier="path=/home/israel/.android/avd/Pixel_7_Pro_API_34.avd" />
@@ -16,16 +22,18 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="deveMostrarONomeDoAplicativoNaTelaDeLogin()">
+      <SelectionState runConfigName="devePreencherOsCamposDeCadastroDeProdutosESalvar()">
         <option name="selectionMode" value="DROPDOWN" />
+        <DropdownSelection timestamp="2025-01-09T14:28:36.224685240Z">
+          <Target type="DEFAULT_BOOT">
+            <handle>
+              <DeviceId pluginId="LocalEmulator" identifier="path=/home/israel/.android/avd/Pixel_7_Pro_API_34.avd" />
+            </handle>
+          </Target>
+        </DropdownSelection>
+        <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="deveMostrarOsCamposNecessariosParaOCadastroDeProduto()">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="deveMostrarOsCamposNecessariosParaOLogin()">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="deveMostrarOsCamposNecessariosParaOCadastroDeUsuario()">
+      <SelectionState runConfigName="devePreencherOsCamposDeCadastroDeUsuarioESalvar()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

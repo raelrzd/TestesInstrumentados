@@ -3,7 +3,7 @@ package br.com.alura.orgs
 import androidx.test.core.app.ActivityScenario.launch
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.pressBack
+import androidx.test.espresso.action.ViewActions.closeSoftKeyboard
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
@@ -27,15 +27,15 @@ class FormularioCadastroUsuarioActivityTest {
         launch(FormularioCadastroUsuarioActivity::class.java)
         onView(withId(R.id.activity_formulario_cadastro_usuario)).perform(
             typeText("usuario"),
-            pressBack()
+            closeSoftKeyboard()
         )
         onView(withId(R.id.activity_formulario_cadastro_email)).perform(
             typeText("usuario@teste.com"),
-            pressBack()
+            closeSoftKeyboard()
         )
         onView(withId(R.id.activity_formulario_cadastro_senha)).perform(
             typeText("teste123"),
-            pressBack()
+            closeSoftKeyboard()
         )
         onView(withId(R.id.activity_formulario_cadastro_botao_cadastrar)).perform(click())
     }
